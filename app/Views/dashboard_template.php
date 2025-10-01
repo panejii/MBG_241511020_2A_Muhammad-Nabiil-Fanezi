@@ -11,20 +11,20 @@
         <a class="navbar-brand" href="/dashboard">ETS Project</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <?php if (session()->get('role') === 'admin'): ?>
+                <?php if (session()->get('role') === 'gudang'): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/students">Manage Students</a>
+                        <a class="nav-link" href="/admin/students">Detail Bahan Baku</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/courses">Manage Courses</a>
+                        <a class="nav-link" href="/admin/courses">Permintaan Dapur</a>
                     </li>
                 <?php endif; ?>
-                <?php if (session()->get('role') === 'student'): ?>
+                <?php if (session()->get('role') === 'dapur'): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/student/courses">All Courses</a>
+                        <a class="nav-link" href="/student/courses">Permintaan Bahan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/student/enrolled">My Courses</a>
+                        <a class="nav-link" href="/student/enrolled">Lihat Status Permintaan</a>
                     </li>
                 <?php endif; ?>
             </ul>

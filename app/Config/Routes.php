@@ -13,24 +13,27 @@ $routes->post('/login/auth', 'Login::auth');
 $routes->get('/login/logout', 'Login::logout');
 $routes->get('/dashboard', 'Dashboard::index');
 
+$routes->get('/admin/dashboard', 'Admin\DashboardGudang::index');
+$routes->get('/student/dashboard', 'Student\DashboardDapur::index');
+
 // Grup rute untuk Admin
-$routes->group('admin', function($routes) {
-    // Rute untuk Students
-    $routes->get('students', 'Admin\Students::index');
-    $routes->get('students/add', 'Admin\Students::add');
-    $routes->post('students/save', 'Admin\Students::save');
-    $routes->get('students/edit/(:num)', 'Admin\Students::edit/$1');
-    $routes->post('students/update/(:num)', 'Admin\Students::update/$1');
-    $routes->delete('students/delete/(:num)', 'Admin\\Students::delete/$1');
+// $routes->group('admin', function($routes) {
+//     // Rute untuk Students
+//     $routes->get('students', 'Admin\Students::index');
+//     $routes->get('students/add', 'Admin\Students::add');
+//     $routes->post('students/save', 'Admin\Students::save');
+//     $routes->get('students/edit/(:num)', 'Admin\Students::edit/$1');
+//     $routes->post('students/update/(:num)', 'Admin\Students::update/$1');
+//     $routes->delete('students/delete/(:num)', 'Admin\\Students::delete/$1');
     
-    // Rute untuk Courses
-    $routes->get('courses', 'Admin\Courses::index');
-    $routes->get('courses/add', 'Admin\Courses::add');
-    $routes->post('courses/save', 'Admin\Courses::save');
-    $routes->get('courses/edit/(:num)', 'Admin\Courses::edit/$1');
-    $routes->post('courses/update/(:num)', 'Admin\Courses::update/$1');
-    $routes->delete('courses/delete/(:num)', 'Admin\\Courses::delete/$1');
-});
+//     // Rute untuk Courses
+//     $routes->get('courses', 'Admin\Courses::index');
+//     $routes->get('courses/add', 'Admin\Courses::add');
+//     $routes->post('courses/save', 'Admin\Courses::save');
+//     $routes->get('courses/edit/(:num)', 'Admin\Courses::edit/$1');
+//     $routes->post('courses/update/(:num)', 'Admin\Courses::update/$1');
+//     $routes->delete('courses/delete/(:num)', 'Admin\\Courses::delete/$1');
+// });
 
 // Grup rute untuk Student
 $routes->group('student', function($routes) {

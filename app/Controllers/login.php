@@ -15,35 +15,31 @@ class Login extends BaseController
         $session = session();
         $model = new UserModel();
 
-        $username = $this->request->getVar('username');
+        $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
 
-        $user = $model->where('username', $username)->first();
+        $user = $model->where('email', $email)->first();
 
         if ($user) {
-            $pass = $user['password'];
-            if (password_verify($password, $pass)) {
+            $hashed = $user['password'];
+
+            if (md5($password) === $hashed) {
                 $ses_data = [
-                    'user_id'   => $user['user_id'],
-                    'username'  => $user['username'],
-                    'full_name' => $user['full_name'],
+                    'user_id'   => $user['id'],
+                    'name'      => $user['name'],
+                    'email'     => $user['email'],
                     'role'      => $user['role'],
                     'logged_in' => TRUE
                 ];
-                $user_id = $user['user_id']; // dari tabel users
-                $studentModel = new \App\Models\StudentModel();
-                $student = $studentModel->where('user_id', $user_id)->first();
-                if ($student) {
-                    $ses_data['student_id'] = $student['student_id'];
-                }
                 $session->set($ses_data);
-                return redirect()->to('/dashboard');
+                return view('/dashboard');
+
             } else {
                 $session->setFlashdata('error', 'Password salah.');
                 return redirect()->to('/login');
             }
         } else {
-            $session->setFlashdata('error', 'Username tidak ditemukan.');
+            $session->setFlashdata('error', 'Email tidak ditemukan.');
             return redirect()->to('/login');
         }
     }

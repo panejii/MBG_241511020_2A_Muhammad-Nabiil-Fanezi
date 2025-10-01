@@ -23,9 +23,9 @@ class Dashboard extends BaseController
         $builder->join('users', 'users.user_id = students.user_id');
         $students = $builder->get()->getResultArray();
 
-        return view('dashboard', [
-            'courses' => $courses,
-            'students' => $students
-        ]);
+        // return view('dashboard', [
+        //     'courses' => $courses,
+        //     'students' => $students
+        // ]);
     }
 }

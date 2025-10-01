@@ -19,14 +19,13 @@
       <?= csrf_field() ?>
 
       <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" name="username" class="form-control" required>
+        <label for="email" class="form-label">Email</label>
+        <input type="text" name="email" class="form-control" required>
       </div>
 
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input type="password" name="password" class="form-control" required>
-        <!-- <p class="mt-3 text-center"> Don't have an account? <a href="<?= base_url('register') ?>">Register Now</a> -->
 </p>
 
       </div>
