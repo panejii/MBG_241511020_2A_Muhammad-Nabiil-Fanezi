@@ -12,20 +12,21 @@ class Dashboard extends BaseController
             return redirect()->to('/login');
         }
 
-        $courseModel = new CourseModel();
-        $db = \Config\Database::connect();
+        // $courseModel = new CourseModel();
+        // $db = \Config\Database::connect();
 
-        $courses = $courseModel->findAll();
+        // $courses = $courseModel->findAll();
 
-        // Join students dan users
-        $builder = $db->table('students');
-        $builder->select('students.student_id, students.entry_year, users.username, users.full_name');
-        $builder->join('users', 'users.user_id = students.user_id');
-        $students = $builder->get()->getResultArray();
+        // // Join students dan users
+        // $builder = $db->table('students');
+        // $builder->select('students.student_id, students.entry_year, users.username, users.full_name');
+        // $builder->join('users', 'users.user_id = students.user_id');
+        // $students = $builder->get()->getResultArray();
 
         // return view('dashboard', [
         //     'courses' => $courses,
         //     'students' => $students
         // ]);
+        return view('dashboard');
     }
 }

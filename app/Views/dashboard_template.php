@@ -13,7 +13,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <?php if (session()->get('role') === 'gudang'): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/students">Detail Bahan Baku</a>
+                        <a class="nav-link" href="/admin/bahan_baku">Detail Bahan Baku</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/courses">Permintaan Dapur</a>
@@ -21,7 +21,7 @@
                 <?php endif; ?>
                 <?php if (session()->get('role') === 'dapur'): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/student/courses">Permintaan Bahan</a>
+                        <a class="nav-link" href="/student/permintaanDapur">Permintaan Bahan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/student/enrolled">Lihat Status Permintaan</a>
@@ -51,7 +51,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Yakin ingin logout?
+        Apakah anda yakin ingin logout?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

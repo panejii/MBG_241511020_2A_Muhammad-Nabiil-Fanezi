@@ -16,6 +16,14 @@ $routes->get('/dashboard', 'Dashboard::index');
 $routes->get('/admin/dashboard', 'Admin\DashboardGudang::index');
 $routes->get('/student/dashboard', 'Student\DashboardDapur::index');
 
+$routes->group('admin', function($routes) {
+    $routes->get('bahan_baku', 'Admin\BahanBaku::index');
+});
+
+$routes->group('student ', function($routes) {
+    $routes->get('permintaanDapur', 'Student\Permintaan::index');
+});
+
 // Grup rute untuk Admin
 // $routes->group('admin', function($routes) {
 //     // Rute untuk Students
