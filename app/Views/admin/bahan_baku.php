@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <h3>Daftar Bahan Baku</h3>
 
-<a href="/admin/bahan-baku/add" class="btn btn-primary mb-3">Tambah Bahan Baku</a>
+<a href="/admin/bahan_baku/add" class="btn btn-primary mb-3">Tambah Bahan Baku</a>
 
 <table class="table table-bordered">
     <thead>

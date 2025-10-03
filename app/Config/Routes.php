@@ -18,6 +18,8 @@ $routes->get('/dapur/dashboard', 'Dapur\DashboardDapur::index');
 
 $routes->group('admin', function($routes) {
     $routes->get('bahan_baku', 'Admin\BahanBaku::index');
+    $routes->get('bahan_baku/add', 'Admin\BahanBaku::add');
+    $routes->post('bahan_baku/store', 'Admin\BahanBaku::store');
 });
 
 $routes->group('dapur', function($routes) {
