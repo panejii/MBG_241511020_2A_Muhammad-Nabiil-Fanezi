@@ -21,7 +21,7 @@
                 <?php endif; ?>
                 <?php if (session()->get('role') === 'dapur'): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/student/permintaanDapur">Permintaan Bahan</a>
+                        <a class="nav-link" href="/dapur/daftar_bahan_view">Permintaan Bahan</a>  
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/student/enrolled">Lihat Status Permintaan</a>

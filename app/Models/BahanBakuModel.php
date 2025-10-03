@@ -12,6 +12,14 @@ class BahanBakuModel extends Model
         'tanggal_masuk', 'tanggal_kadaluarsa',
         'status', 'created_at'
     ];
+
+    public function getBahanTersedia()
+    {
+        return $this->select('*')
+                    ->where('jumlah >', 0)
+                    ->where('status !=', 'kadaluarsa')
+                    ->findAll();
+    }
 }
 
 ?>

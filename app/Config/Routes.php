@@ -14,14 +14,14 @@ $routes->get('/login/logout', 'Login::logout');
 $routes->get('/dashboard', 'Dashboard::index');
 
 $routes->get('/admin/dashboard', 'Admin\DashboardGudang::index');
-$routes->get('/student/dashboard', 'Student\DashboardDapur::index');
+$routes->get('/dapur/dashboard', 'Dapur\DashboardDapur::index');
 
 $routes->group('admin', function($routes) {
     $routes->get('bahan_baku', 'Admin\BahanBaku::index');
 });
 
-$routes->group('student ', function($routes) {
-    $routes->get('permintaanDapur', 'Student\Permintaan::index');
+$routes->group('dapur', function($routes) {
+    $routes->get('daftar_bahan_view', 'Dapur\Permintaan::index');
 });
 
 // Grup rute untuk Admin
