@@ -50,13 +50,21 @@
                     <td><?= esc($bahan['tanggal_kadaluarsa']) ?></td>
                     <td><?= esc($dynamicStatus) ?></td>
                     
+                    <?php
+                    $deleteButtonClass = ($dynamicStatus === 'KADALUARSA') ? 'btn-danger' : 'btn-grey disabled';
+                                $confirmMessage = ($dynamicStatus === 'KADALUARSA') 
+                                    ? 'ANDA YAKIN INGIN MENGHAPUS BAHAN INI? HANYA BAHAN KADALUARSA YANG BOLEH DIHAPUS!'
+                                    : 'PERINGATAN! Bahan ini belum kadaluarsa. Penghapusan akan ditolak Controller. Lanjutkan?';
+                    ?>
+
                     <td class="text-nowrap">
                         <a href="/admin/bahan_baku/edit/<?= $bahan['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="/admin/bahan-baku/delete/<?= $bahan['id'] ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus bahan ini? Tindakan ini tidak dapat dibatalkan!');">
-                            <?= csrf_field() ?>
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                        </form>
+                        
+                            <form action="/admin/bahan-baku/delete/<?= $bahan['id'] ?>" method="post" class="d-inline" onsubmit="return confirm('<?= esc($confirmMessage) ?>');">
+                                    <?= csrf_field() ?>
+                                    <button type="submit" class="btn <?= $deleteButtonClass ?> btn-sm">Hapus</button>
+                                </form>
+                       
                     </td>
                 </tr>
             <?php endforeach; ?>

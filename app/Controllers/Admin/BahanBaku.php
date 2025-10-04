@@ -107,4 +107,33 @@ class BahanBaku extends BaseController
         }
     }
 
+    public function delete($id)
+    {
+        if (!session()->get('logged_in') || session()->get('role') !== 'gudang') {
+            return redirect()->to('/login');
+        }
+        
+        $bahan = $this->bahanModel->find($id);
+
+        if (!$bahan) {
+            session()->setFlashdata('error', 'Bahan baku tidak ditemukan.');
+            return redirect()->back();
+        }
+
+        $TanggalKadaluarsa = strtotime($bahan['tanggal_kadaluarsa']);
+        $daysDifference = ceil(($TanggalKadaluarsa - time()) / (60 * 60 * 24));
+
+        if ($daysDifference > 0) {
+            session()->setFlashdata('error', 'Gagal menghapus! Bahan baku ini belum kadaluarsa.');
+            return redirect()->back();
+        }
+
+        if ($this->bahanModel->delete($id)) {
+            session()->setFlashdata('success', 'Bahan baku kadaluarsa berhasil dihapus.');
+        } else {
+            session()->setFlashdata('error', 'Gagal menghapus bahan baku.');
+        }
+
+        return redirect()->back();
+    }
 }

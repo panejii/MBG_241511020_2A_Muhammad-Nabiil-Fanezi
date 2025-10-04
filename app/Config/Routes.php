@@ -22,6 +22,7 @@ $routes->group('admin', function($routes) {
     $routes->post('bahan_baku/store', 'Admin\BahanBaku::store');
     $routes->get('bahan_baku/edit/(:num)', 'Admin\BahanBaku::edit/$1');
     $routes->post('bahan_baku/update/(:num)', 'Admin\BahanBaku::update/$1');
+    $routes->post('bahan_baku/delete/(:num)', 'Admin\BahanBaku::delete/$1');
 });
 
 $routes->group('dapur', function($routes) {
