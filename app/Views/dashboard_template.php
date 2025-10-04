@@ -16,15 +16,15 @@
                         <a class="nav-link" href="/admin/bahan_baku">Detail Bahan Baku</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/courses">Permintaan Dapur</a>
+                        <a class="nav-link" href="/admin/showPermintaan">Permintaan Dapur</a>
                     </li>
                 <?php endif; ?>
                 <?php if (session()->get('role') === 'dapur'): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/dapur/daftar_bahan_view">Permintaan Bahan</a>  
+                        <a class="nav-link" href="/dapur/permintaan">Permintaan Bahan</a>  
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/student/enrolled">Lihat Status Permintaan</a>
+                        <a class="nav-link" href="/dapur/status_permintaan">Lihat Status Permintaan</a>
                     </li>
                 <?php endif; ?>
             </ul>

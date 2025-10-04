@@ -4,7 +4,6 @@
 <div class="container-fluid">
     <h3 class="mb-4">Tambah Bahan Baku Baru</h3>
 
-    <!-- Tampilkan pesan sukses/error (Flashdata) -->
     <?php if (session()->getFlashdata('success')): ?>
         <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
     <?php endif; ?>
@@ -12,7 +11,6 @@
         <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
     <?php endif; ?>
 
-    <!-- Form menggunakan CodeIgniter 4 -->
     <form action="/admin/bahan_baku/store" method="post">
         <?= csrf_field() ?>
         
@@ -39,7 +37,6 @@
                 </div>
                 <label for="satuan" class="col-sm-1 col-form-label">Satuan</label>
                 <div class="col-sm-3">
-                    <!-- Contoh pilihan satuan, Anda bisa ganti dengan input text jika lebih fleksibel -->
                     <select class="form-select" id="satuan" name="satuan" required>
                         <option value="kg" <?= old('satuan') == 'kg' ? 'selected' : '' ?>>Kilogram (kg)</option>
                         <option value="gr" <?= old('satuan') == 'gr' ? 'selected' : '' ?>>Gram (gr)</option>
@@ -73,26 +70,3 @@
     </form>
 </div>
 <?= $this->endSection() ?>
-```
-
----
-
-## 3. Routing: Menghubungkan *Controller*
-
-Tambahkan *route group* baru di **`app/Config/Routes.php`** untuk *role* Admin (Gudang).
-
-### File: `app/Config/Routes.php`
-
-```php
-// Tambahkan di bagian bawah file Routes.php
-// Pastikan Anda juga memiliki route untuk 'dapur' yang sudah dibuat sebelumnya
-$routes->group('admin', function($routes) {
-    // URL untuk menampilkan form: [base_url]/admin/bahan-baku/add
-    $routes->get('bahan-baku/add', 'Admin\BahanBakuController::add');
-    
-    // URL untuk memproses data: [base_url]/admin/bahan-baku/store (Method POST)
-    $routes->post('bahan-baku/store', 'Admin\BahanBakuController::store');
-
-    // Route untuk daftar bahan (untuk redirect setelah store)
-    $routes->get('bahan-baku', 'Admin\BahanBakuController::index');
-});

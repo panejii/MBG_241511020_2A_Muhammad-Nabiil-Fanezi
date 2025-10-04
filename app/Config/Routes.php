@@ -6,7 +6,6 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-// Rute dasar untuk login dan register
 $routes->get('/', 'Login::index');
 $routes->get('/login', 'Login::index');
 $routes->post('/login/auth', 'Login::auth');
@@ -23,8 +22,18 @@ $routes->group('admin', function($routes) {
     $routes->get('bahan_baku/edit/(:num)', 'Admin\BahanBaku::edit/$1');
     $routes->post('bahan_baku/update/(:num)', 'Admin\BahanBaku::update/$1');
     $routes->post('bahan_baku/delete/(:num)', 'Admin\BahanBaku::delete/$1');
+    $routes->get('showPermintaan', 'Admin\Permintaan::index');
+    $routes->get('showPermintaan/detail/(:num)', 'Admin\Permintaan::show/$1');
+    $routes->post('showPermintaan/process/(:num)', 'Admin\Permintaan::process/$1');
+    $routes->get('permintaan/detail/(:num)', 'Admin\Permintaan::detail/$1');
+
 });
 
-$routes->group('dapur', function($routes) {
-    $routes->get('daftar_bahan_view', 'Dapur\Permintaan::index');
+$routes->group('dapur', ['namespace' => 'App\Controllers\Dapur'], function ($routes) {
+    $routes->get('permintaan', 'Permintaan::index');
+    $routes->post('permintaan/send', 'Permintaan::send');
+    $routes->get('status_permintaan', 'StatusPermintaan::index'); 
+    $routes->get('status_permintaan', 'StatusPermintaan::index'); 
+    $routes->get('status_permintaan/detail/(:num)', 'StatusPermintaan::detail/$1');
 });
+

@@ -25,7 +25,7 @@ class Login extends BaseController
 
             if (md5($password) === $hashed) {
                 $ses_data = [
-                    'user_id'   => $user['id'],
+                    'id'        => $user['id'], // PASTIKAN $user['id'] adalah ID yang BENAR (misal: 10)
                     'name'      => $user['name'],
                     'email'     => $user['email'],
                     'role'      => $user['role'],

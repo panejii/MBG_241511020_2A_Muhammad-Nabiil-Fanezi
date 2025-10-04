@@ -60,7 +60,7 @@
                     <td class="text-nowrap">
                         <a href="/admin/bahan_baku/edit/<?= $bahan['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
                         
-                            <form action="/admin/bahan-baku/delete/<?= $bahan['id'] ?>" method="post" class="d-inline" onsubmit="return confirm('<?= esc($confirmMessage) ?>');">
+                            <form action="/admin/bahan_baku/delete/<?= $bahan['id'] ?>" method="post" class="d-inline" onsubmit="return confirm('<?= esc($confirmMessage) ?>');">
                                     <?= csrf_field() ?>
                                     <button type="submit" class="btn <?= $deleteButtonClass ?> btn-sm">Hapus</button>
                                 </form>
